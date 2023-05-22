@@ -1,15 +1,25 @@
 import useSlowCounter from "../../hooks/useSlowCounter";
-// Connect4CellMask component is a blue square that has a circular mask inside letting show whatever is behind it through the circle. Using tailwind
+
 
 const Connect4CellMask = () => (
-  <div className="h-28 m-2 w-28 bg-blue-600 circleclip"></div>
+  <div className="box-content h-20 p-2 overflow-hidden w-20">
+    <div className="circleclip h-full rounded-full w-full" />
+  </div>
+);
+
+const Connect4Maskboard = ({ width = 7, height = 6 }) => (
+  <div className="circleclip absolute flex flex-wrap left-2 top-2" style={{ width: `${(6 * width)}rem` }}>
+    {Array.from(Array(width * height), (_, index) => index).map((index) => (
+      <Connect4CellMask key={index} />
+    ))}
+  </div>
 );
 
 const Connect4Cell = ({ player, empty = false, entering = false }) => (
   <div
-    className={`h-28 m-2 rounded-full w-28 ${
+    className={`h-20 m-2 rounded-full w-20 ${
       !empty && (player === 1 ? "bg-red-600" : "bg-yellow-400")
-    } ${empty ? "bg-gray-200" : ""}
+    }
     ${entering ? "animate animate-enterup" : ""}`}
   />
 );
@@ -77,15 +87,15 @@ const Connect4BoardDummy = ({
 const Connect4Board = ({ width = 7, height = 6, moves = [] }) => {
   const stop = useSlowCounter(moves.length - 1, 1000);
   return (
-    <>
+    <div className="box-content mb-8 mx-auto overflow-hidden p-2 relative rounded-md shadow-xl" style={{ width: `${6 * width}rem` }}>
       <Connect4BoardDummy
         width={width}
         height={height}
         moves={moves}
         stop={stop}
       />
-      <Connect4CellMask />
-    </>
+      <Connect4Maskboard />
+    </div>
   );
 };
 

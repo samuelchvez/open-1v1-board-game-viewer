@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: rgb(242, 242, 242);
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .circleclip {
-    clip-path: circle(50px at center);
+  box-shadow: 0 0 0 99999px rgb(38, 90, 201);
 }

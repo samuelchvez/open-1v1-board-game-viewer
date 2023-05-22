@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 
 import { PlayersContext } from "../GlobalProvider/Players";
 import { GamesContext } from "../GlobalProvider/Games";
+import Connect4PlayersDisplay from "../Connect4PlayersDisplay";
 
-const GameDummy = ({ id, player1, player2, winner }) => (
-  <div>
-    <h2>
-      <Link to={`/game-sim/${id}`}>Game: {id}</Link>
-    </h2>
-    <h3>Player 1: {player1}</h3>
-    <h3>Player 2: {player2}</h3>
-    <h3>Winner: {winner}</h3>
+const GameDummy = ({ id, player1, player2 }) => (
+  <div className="border border-gray-400 max-w-sm p-4 rounded">
+    <div className="font-bold text-lg mb-4 text-center">
+      <Link to={`/game-sim/${id}`} className="font-light text-gray-800 underline">{id}</Link>
+    </div>
+    <Connect4PlayersDisplay player1={player1} player2={player2} />
   </div>
 );
 
@@ -26,9 +25,8 @@ const Game = ({ id }) => {
   return (
     <GameDummy
       id={id}
-      player1={p1.username}
-      player2={p2.username}
-      winner={game.winner}
+      player1={p1}
+      player2={p2}
     />
   );
 };

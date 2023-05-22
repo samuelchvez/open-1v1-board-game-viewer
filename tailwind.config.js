@@ -5,13 +5,16 @@ module.exports = {
     extend: {
       keyframes: {
         enterup: {
-          "0%": { opacity: 0, transform: "translateY(-500%)" },
-          "100%": { opacity: 1 },
+          "0%": { transform: "translateY(-700%)" },
+          "100%": {  },
         },
       },
       animation: {
         enterup: "enterup 1s ease-in-out",
       },
+      fontFamily: {
+        manrope: ["Montserrat", "sans-serif"],
+      }
     },
   },
   plugins: [],
