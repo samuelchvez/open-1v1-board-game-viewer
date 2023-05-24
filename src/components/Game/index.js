@@ -6,7 +6,7 @@ import { GamesContext } from "../GlobalProvider/Games";
 import Connect4PlayersDisplay from "../Connect4PlayersDisplay";
 
 const GameDummy = ({ id, player1, player2 }) => (
-  <div className="border border-gray-400 max-w-sm p-4 rounded">
+  <div className="border border-gray-400 max-w-lg p-4 rounded">
     <div className="font-bold text-lg mb-4 text-center">
       <Link to={`/game-sim/${id}`} className="font-light text-gray-800 underline">{id}</Link>
     </div>
